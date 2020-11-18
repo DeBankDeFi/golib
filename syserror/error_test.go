@@ -10,7 +10,7 @@ import (
 )
 
 func TestNewError(t *testing.T) {
-	err := syserror.New("tid", "ID", "Note", syserror.WithFields(map[string]interface{}{
+	err := syserror.NewV2("tid", "ID", "Note", syserror.WithFields(map[string]interface{}{
 		"Foo": "Foo",
 	}))
 	err = syserror.Wrap(err, "A")
@@ -20,7 +20,7 @@ func TestNewError(t *testing.T) {
 }
 
 func TestNewErrorEx(t *testing.T) {
-	err := syserror.New("tid", "ID", "Note", syserror.WithCode(codes.Internal), syserror.WithFields(map[string]interface{}{
+	err := syserror.NewV2("tid", "ID", "Note", syserror.WithCode(codes.Internal), syserror.WithFields(map[string]interface{}{
 		"Foo": "bar",
 	}))
 	err = syserror.Wrap(err, "A")

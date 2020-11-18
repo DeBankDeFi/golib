@@ -13,7 +13,7 @@ func TestHttpGet(t *testing.T) {
 	result := bytes.NewBuffer(nil)
 	err := httplib.NewHTTPClient().Get(context.Background(), &httplib.RequestArgs{
 		TraceID: "fakeID",
-		URL:     "http://www.google.cn",
+		URL:     "http://www.sina.cn",
 		Headers: map[string]string{
 			"X-NAME": "sdsd",
 		},
@@ -33,7 +33,7 @@ func TestHttpResponseHeader(t *testing.T) {
 	respHeaders := make(map[string][]string, 0)
 	err := httplib.NewHTTPClient().Get(context.Background(), &httplib.RequestArgs{
 		TraceID: "fakeID",
-		URL:     "http://www.google.cn",
+		URL:     "http://www.sina.cn",
 		Headers: map[string]string{
 			"X-NAME": "sdsd",
 		},
@@ -57,7 +57,7 @@ func TestHttpPost(t *testing.T) {
 	result := bytes.NewBuffer(nil)
 	err := httplib.NewHTTPClient().Post(context.Background(), &httplib.RequestArgs{
 		TraceID: "fakeID",
-		URL:     "http://www.google.cn",
+		URL:     "http://www.sina.cn",
 		Headers: map[string]string{
 			"X-NAME": "sdsd",
 		},
@@ -80,7 +80,7 @@ func TestHttpsGet(t *testing.T) {
 		&tls.Config{InsecureSkipVerify: true},
 	).Get(context.Background(), &httplib.RequestArgs{
 		TraceID: "fakeID",
-		URL:     "https://www.google.cn",
+		URL:     "https://www.sina.cn",
 		Headers: map[string]string{
 			"X-NAME": "sdsd",
 		},
@@ -101,7 +101,7 @@ func TestHttpsPost(t *testing.T) {
 		&tls.Config{InsecureSkipVerify: true},
 	).Post(context.Background(), &httplib.RequestArgs{
 		TraceID: "fakeID",
-		URL:     "https://www.google.cn",
+		URL:     "https://www.sina.cn",
 		Headers: map[string]string{
 			"X-NAME": "sdsd",
 		},
