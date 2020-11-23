@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/DeBankOps/golib/syserror"
+	"github.com/DeBankDeFi/golib/syserror"
 
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"

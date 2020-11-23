@@ -6,7 +6,7 @@ import (
 	"crypto/tls"
 	"testing"
 
-	"github.com/DeBankOps/golib/httplib"
+	"github.com/DeBankDeFi/golib/httplib"
 )
 
 func TestHttpGet(t *testing.T) {

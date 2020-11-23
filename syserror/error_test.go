@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/DeBankOps/golib/syserror"
+	"github.com/DeBankDeFi/golib/syserror"
 
 	"google.golang.org/grpc/codes"
 )

@@ -1,4 +1,4 @@
-module github.com/DeBankOps/golib
+module github.com/DeBankDeFi/golib
 
 go 1.15
 
