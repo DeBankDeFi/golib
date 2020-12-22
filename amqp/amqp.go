@@ -5,7 +5,7 @@ import (
 	"errors"
 	"strings"
 
-	log "github.com/DeBankDeFi/glog"
+	"github.com/XSAM/go-hybrid/log"
 	"github.com/streadway/amqp"
 )
 
@@ -14,10 +14,6 @@ var (
 	ErrClosed = amqp.ErrClosed
 	// ErrDeliveryChannelClosed ...
 	ErrDeliveryChannelClosed = errors.New("delivery channel was closed")
-)
-
-var (
-	logger = log.NewLogFactory().DefaultLogger(log.LevelInfo)
 )
 
 // Config ...
@@ -117,21 +113,21 @@ type Handler func(ctx context.Context, ch *Channel, d *Delivery) error
 
 // Consume consume message from amqp broker in block mode.
 func (ch *Channel) Consume(ctx context.Context, queue string, handler Handler, dc <-chan amqp.Delivery) error {
-	logger.Infof(ctx, "amqp: start the consumer of %s queue", queue)
+	log.BgLogger().Infof("amqp: start the consumer of %s queue", queue)
 	for {
 		select {
 		case <-ctx.Done():
-			logger.Infof(ctx, "amqp: stop the consumer of %s queue", queue)
+			log.BgLogger().Infof("amqp: stop the consumer of %s queue", queue)
 			return nil
 		case d, ok := <-dc:
 			if !ok {
-				logger.Warnf(ctx, "amqp: the deliver channel of %s queue closed", queue)
+				log.BgLogger().Warnf("amqp: the deliver channel of %s queue closed", queue)
 				return ErrDeliveryChannelClosed
 			}
 			go func() {
 				err := ch.consume(queue, handler, &Delivery{&d})
 				if err != nil {
-					logger.Warnf(ctx, "amqp: execute handler with queue %s failed, reason: %v", queue, err.Error())
+					log.BgLogger().Warnf("amqp: execute handler with queue %s failed, reason: %v", queue, err.Error())
 				}
 			}()
 		}
