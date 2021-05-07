@@ -210,6 +210,21 @@ func (c *HTTPClient) Post(ctx context.Context, args *RequestArgs) error {
 	return c.doRequest(ctx, req, args)
 }
 
+// Put 发送 HTTP Put 请求
+func (c *HTTPClient) Put(ctx context.Context, args *RequestArgs) error {
+	body, err := c.genBody(args)
+	if err != nil {
+		return syserror.Wrap(err, "generate http post body failed")
+	}
+	req, err := http.NewRequest("PUT", args.URL, body)
+	if err != nil {
+		return syserror.New(args.TraceID, "NEW_HTTP_REQUEST", err.Error(), map[string]interface{}{
+			"URL": args.URL,
+		})
+	}
+	return c.doRequest(ctx, req, args)
+}
+
 func (c *HTTPClient) doRequest(ctx context.Context, req *http.Request, args *RequestArgs) error {
 	c.setHeaders(req, args)
 	c.setParams(req, args)
