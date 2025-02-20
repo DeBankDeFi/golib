@@ -3,7 +3,7 @@ module github.com/DeBankDeFi/golib
 go 1.15
 
 require (
-	github.com/DeBankDeFi/glog v0.0.0-20201123022541-666435a4b1f3
+	github.com/DeBankDeFi/glog v1.0.0
 	github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20190618055949-e8251f77f2ba
 	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
 	github.com/golang/protobuf v1.4.3
